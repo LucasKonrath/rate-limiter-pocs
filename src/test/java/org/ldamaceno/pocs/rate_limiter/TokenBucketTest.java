@@ -2,10 +2,6 @@ package org.ldamaceno.pocs.rate_limiter;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedDeque;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

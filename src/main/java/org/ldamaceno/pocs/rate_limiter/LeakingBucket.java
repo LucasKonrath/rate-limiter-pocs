@@ -9,13 +9,12 @@ public class LeakingBucket {
     private final Long maxSize;
     private final long leakRate;
     private long currentSize;
-    private final ScheduledExecutorService scheduledExecutorService;
 
     public LeakingBucket(Long maxSize, long leakRate) {
         this.maxSize = maxSize;
         this.leakRate = leakRate;
         this.currentSize = 0;
-        this.scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 
         scheduledExecutorService.scheduleAtFixedRate(this::leak, 0, 1, TimeUnit.SECONDS);
     }

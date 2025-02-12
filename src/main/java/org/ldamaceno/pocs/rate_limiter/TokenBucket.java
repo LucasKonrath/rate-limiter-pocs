@@ -11,13 +11,12 @@ public class TokenBucket {
     private final Integer maxSize;
     private final long tokensPerSecond;
     private final AtomicLong tokens;
-    private final ScheduledExecutorService scheduledExecutorService;
 
     public TokenBucket(Integer maxSize, long tokensPerSecond) {
         this.maxSize = maxSize;
         this.tokensPerSecond = tokensPerSecond;
         this.tokens = new AtomicLong(maxSize);
-        this.scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+        ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 
         scheduledExecutorService.scheduleAtFixedRate(this::fillBucket, 0, 1, TimeUnit.SECONDS);
     }
