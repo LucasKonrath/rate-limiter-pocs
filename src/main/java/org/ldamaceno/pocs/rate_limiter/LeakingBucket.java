@@ -20,7 +20,7 @@ public class LeakingBucket {
         scheduledExecutorService.scheduleAtFixedRate(this::leak, 0, 1, TimeUnit.SECONDS);
     }
 
-    private void leak() {
+    private synchronized void leak() {
         currentSize = Math.max(0, currentSize - leakRate);
     }
 
